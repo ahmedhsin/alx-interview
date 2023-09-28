@@ -2,6 +2,7 @@
 # solve for pascal problem
 
 def pascal_triangle(n):
+    """solve pascal problem iterative way"""
     if n <= 0:
         return []
     pascal = [[1], [1, 1]]
