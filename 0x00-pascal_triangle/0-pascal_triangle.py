@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """"solution for pascal problem"""
 
+
 def pascal_triangle(n):
     """solution pascal problem iterative way"""
     if n <= 0:
