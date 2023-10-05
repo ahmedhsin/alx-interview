@@ -4,12 +4,10 @@
 
 
 def helperFunc(boxes, k, keys):
-    if len(boxes[k]) == 0:
+    if k >= len(boxes) or len(boxes[k]) == 0:
         return
     for key in boxes[k]:
-        tmp = keys.get(key, None)
-        valid = tmp is not None or (tmp is not None and tmp >= len(boxes))
-        if valid:
+        if keys.get(key, None) is not None:
             continue
         else:
             keys[key] = True
