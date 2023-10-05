@@ -19,7 +19,7 @@ def helperFunc(boxes, k, keys):
 def canUnlockAll(boxes):
     keys = {0: True}
     helperFunc(boxes, 0, keys)
-    if len(keys) == len(boxes):
-        return True
-    else:
-        return False
+    for i in range(len(boxes)):
+        if keys.get(i, None) is None:
+            return False
+    return True
