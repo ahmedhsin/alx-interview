@@ -4,13 +4,18 @@
 
 def minOperations(n):
     """min op"""
+    if type(n) == float:
+        return 0
     counter = 0
     while (n != 1):
+        ok = False
         for i in range(2, n):
             if n % i == 0:
                 counter += i
-                n /= i
-                continue
-        counter += n
-        break
-    return int(counter)
+                n //= i
+                ok = True
+                break
+        if not ok:
+            counter += n
+            break
+    return counter
