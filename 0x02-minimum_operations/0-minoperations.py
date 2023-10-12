@@ -4,7 +4,7 @@
 
 def minOperations(n):
     """min op"""
-    if type(n) == float:
+    if type(n) == float or n <= 0:
         return 0
     counter = 0
     while (n != 1):
