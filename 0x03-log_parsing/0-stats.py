@@ -33,11 +33,11 @@ def run():
             try:
                 statstics[int(data[-2])] += 1
             except Exception:
-                continue
+                pass
             try:
                 total_size += int(data[-1])
             except Exception:
-                continue
+                pass
             if num % 10 == 0:
                 printDict()
     except KeyboardInterrupt:
