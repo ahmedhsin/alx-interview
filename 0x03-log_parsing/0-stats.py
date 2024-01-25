@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """this is a log parser"""
 import sys
-import re
 
 
 total_size = 0
@@ -19,7 +18,7 @@ statstics = {
 
 def printDict():
     print(f'File size: {total_size}')
-    for k, v in statstics.items():
+    for k, v in sorted(statstics.items()):
         if v > 0:
             print(f'{k}: {v}')
 
