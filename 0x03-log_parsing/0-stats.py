@@ -36,16 +36,13 @@ def run():
             ip = re.search(ip_pattern, line)
             status = re.search(status_pattern, line)
             size = re.search(size_pattern, line)
-            if status is None or int(status.group(1)) not in statstics:
-                continue
-
-            if ip is None or size is None:
-                continue
-            ip = ip.group(1)
-            status = status.group(1)
-            size = size.group(1)
-            statstics[int(status)] += 1
-            total_size += int(size)
+            try:
+                status = status.group(1)
+                size = size.group(1)
+                statstics[int(status)] += 1
+                total_size += int(size)
+            except Exception:
+                pass
             if num % 10 == 0:
                 printDict()
     except KeyboardInterrupt:
