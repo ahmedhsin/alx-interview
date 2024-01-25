@@ -30,26 +30,27 @@ def printDict():
 
 def run():
     global num, total_size
-    for line in sys.stdin:
-        num += 1
-        ip = re.search(ip_pattern, line)
-        status = re.search(status_pattern, line)
-        size = re.search(size_pattern, line)
-        if status is None or int(status.group(1)) not in statstics:
-            continue
+    try:
+        for line in sys.stdin:
+            num += 1
+            ip = re.search(ip_pattern, line)
+            status = re.search(status_pattern, line)
+            size = re.search(size_pattern, line)
+            if status is None or int(status.group(1)) not in statstics:
+                continue
 
-        if ip is None or size is None:
-            continue
-        ip = ip.group(1)
-        status = status.group(1)
-        size = size.group(1)
-        statstics[int(status)] += 1
-        total_size += int(size)
-        if num % 10 == 0:
-            printDict()
+            if ip is None or size is None:
+                continue
+            ip = ip.group(1)
+            status = status.group(1)
+            size = size.group(1)
+            statstics[int(status)] += 1
+            total_size += int(size)
+            if num % 10 == 0:
+                printDict()
+    except KeyboardInterrupt:
+        printDict()
+        raise
 
 
-try:
-    run()
-except KeyboardInterrupt:
-    printDict()
+run()
