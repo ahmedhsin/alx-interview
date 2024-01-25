@@ -29,8 +29,12 @@ def run():
         for line in sys.stdin:
             num += 1
             data = line.split()
+            if len(data) != 9:
+                continue
             try:
-                statstics[int(data[-2])] += 1
+                sc = int(data[-2])
+                if sc in statstics:
+                    statstics[sc] += 1
             except Exception:
                 pass
             try:
