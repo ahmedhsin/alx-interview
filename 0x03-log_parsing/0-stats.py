@@ -46,6 +46,7 @@ def run():
     except KeyboardInterrupt:
         printDict()
         raise
+    printDict()
 
 
 if __name__ == "__main__":
