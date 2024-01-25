@@ -16,10 +16,6 @@ statstics = {
     405: 0,
     500: 0}
 
-ip_pattern = r'((\d{1,3}\.){0,3}\d{1,3})'
-status_pattern = r'"\s(\d{3})\s'
-size_pattern = r'"\s\d{3}\s(\d+)'
-
 
 def printDict():
     print(f'File size: {total_size}')
@@ -33,19 +29,15 @@ def run():
     try:
         for line in sys.stdin:
             num += 1
-            ip = re.search(ip_pattern, line)
-            status = re.search(status_pattern, line)
-            size = re.search(size_pattern, line)
-            if status is None or int(status.group(1)) not in statstics:
+            data = line.split()
+            try:
+                statstics[int(data[-2])] += 1
+            except Exception:
                 continue
-
-            if ip is None or size is None:
+            try:
+                total_size += int(data[-1])
+            except Exception:
                 continue
-            ip = ip.group(1)
-            status = status.group(1)
-            size = size.group(1)
-            statstics[int(status)] += 1
-            total_size += int(size)
             if num % 10 == 0:
                 printDict()
     except KeyboardInterrupt:
