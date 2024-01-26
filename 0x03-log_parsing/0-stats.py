@@ -18,7 +18,7 @@ statstics = {
 
 ip_pattern = r'((\d{1,3}\.){0,3}\d{1,3})'
 status_pattern = r'"\s(\d{3})\s'
-size_pattern = r'"\s\d{3}\s(\d+)'
+size_pattern = r'\s(\d+)$'
 
 
 def printDict():
