@@ -48,10 +48,10 @@ def run():
                 pass
             if num % 10 == 0:
                 printDict()
+        printDict()
     except KeyboardInterrupt:
         printDict()
         raise
-    printDict()
 
 
 if __name__ == "__main__":
