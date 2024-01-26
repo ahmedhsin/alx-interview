@@ -40,6 +40,9 @@ def run():
                 status = status.group(1)
                 size = size.group(1)
                 statstics[int(status)] += 1
+            except Exception:
+                pass
+            try:
                 total_size += int(size)
             except Exception:
                 pass
