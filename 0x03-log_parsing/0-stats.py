@@ -38,11 +38,11 @@ def run():
             size = re.search(size_pattern, line)
             try:
                 status = status.group(1)
-                size = size.group(1)
                 statstics[int(status)] += 1
             except Exception:
                 pass
             try:
+                size = size.group(1)
                 total_size += int(size)
             except Exception:
                 pass
