@@ -33,6 +33,7 @@ def validUTF8(data):
         if index == len(data):
             return True
         elif index == -1:
-            return False
+            i = i + 1
         else:
             i = 1
+    return False
