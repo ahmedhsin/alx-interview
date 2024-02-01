@@ -8,8 +8,6 @@ def is_valid(byte, pattern):
     """check if byte has pattern"""
     if len(bin(byte)) < 10:
         return pattern == 0b0
-    elif len(bin(byte)) > 10:
-        return False
     if pattern == 0b0:
         return (int(bin(byte)[2:3])) == 0
     elif pattern == 0b110:
