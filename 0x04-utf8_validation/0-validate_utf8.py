@@ -6,12 +6,20 @@ px = [0b10, 0b0, 0b110, 0b1110, 0b11110]
 
 def is_valid(byte, pattern):
     """check if byte has pattern"""
-    mask = 1 << 7
-    for _ in range(pattern):
-        if not (byte & mask):
-            return False
-        mask >>= 1
-    return not (byte & mask)
+    if len(bin(byte)) < 10:
+        return pattern == 0b0
+    elif len(bin(byte)) > 10:
+        return False
+    if pattern == 0b0:
+        return (int(bin(byte)[2:3])) == 0
+    elif pattern == 0b110:
+        return (int(bin(byte)[2:5])) == 110
+    elif pattern == 0b1110:
+        return (int(bin(byte)[2:6])) == 1110
+    elif pattern == 0b11110:
+        return (int(bin(byte)[2:7])) == 11110
+    else:
+        return (int(bin(byte)[2:4])) == 10
 
 
 def valid(data, pattern, i, stop):
