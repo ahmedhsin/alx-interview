@@ -7,6 +7,8 @@ from sys import argv
 def check_mate(board, x, y):
     "check if the can put in correct place or not"
     m = len(board)
+    if board[x][y] == 1:
+        return 1
     for i in range(m):
         mate = 0
         if x + i < m:
@@ -35,27 +37,30 @@ def check_mate(board, x, y):
 
 def extract_sol(board):
     """extract the solution from board to be in format"""
-    answer = set()
+    answer = []
     m = len(board)
     for i in range(m):
         for j in range(m):
             if board[i][j] == 1:
-                answer.add(tuple([i, j]))
-    return tuple(answer)
+                answer.append([i, j])
+    return answer
 
 
-def nqueen(N, board, queens, answers):
+def nqueen(N, board, i, queens, answers):
     """N queen function"""
     if queens == N:
-        answers.add(extract_sol(board))
+        answers.append(extract_sol(board))
         return
 
-    for i in range(N):
-        for j in range(N):
+    while i < N:
+        j = 0
+        while j < N:
             if not check_mate(board, i, j):
                 board[i][j] = 1
-                nqueen(N, board, queens + 1, answers)
+                nqueen(N, board, i + 1, queens + 1, answers)
                 board[i][j] = 0
+            j += 1
+        i += 1
     return answers
 
 
@@ -79,12 +84,9 @@ def main():
         print('N must be at least 4')
         exit(1)
     board = create_board(N)
-    answers = nqueen(N, board, 0, set())
+    answers = nqueen(N, board, 0, 0, [])
     for answer in answers:
-        arr = []
-        for s in answer:
-            arr.append(list(s))
-        print(arr)
+        print(answer)
 
 
 if __name__ == "__main__":
