@@ -1,7 +1,7 @@
 #!/usr/bin/node
 const request = require('request');
 const error = new Error('Something went wrong');
-const url = 'https://swapi-api.alx-tools.com/api/films/3/';
+const url = 'https://swapi-api.alx-tools.com/api/films/' + process.argv[2] +'/';
 const promise = new Promise((resolve, reject) => {
   request(url, (err, res, data) => {
     if (err) reject(error);
