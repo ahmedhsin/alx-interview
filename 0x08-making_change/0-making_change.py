@@ -4,6 +4,8 @@
 
 def makeChange(coins, total):
     """will solved in iterative way"""
+    if total <= 0:
+        return 0
     dp = [-1 for _ in range(total+1)]
     a = coins.copy()
     coins.sort()
