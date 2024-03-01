@@ -5,6 +5,9 @@
 def makeChange(coins, total):
     """will solved in iterative way"""
     dp = [-1 for _ in range(total+1)]
+    a = coins.copy()
+    coins.sort()
+    coins.reverse()
     for i in range(total+1):
         if i == 0:
             dp[i] = 0
@@ -19,4 +22,6 @@ def makeChange(coins, total):
                 dp[i] = mn
             else:
                 dp[i] = min(mn, dp[i])
+                break
+    coins = a
     return (dp[total])
