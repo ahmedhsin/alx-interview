@@ -7,12 +7,20 @@ def calc_perimeter(grid, i, j):
     cnt = 0
     if i + 1 < len(grid):
         cnt += 1 if grid[i + 1][j] == 0 else 0
+    else:
+        cnt += 1
     if i - 1 >= 0:
         cnt += 1 if grid[i - 1][j] == 0 else 0
+    else:
+        cnt += 1
     if j - 1 >= 0:
         cnt += 1 if grid[i][j - 1] == 0 else 0
+    else:
+        cnt += 1
     if j + 1 < len(grid[0]):
         cnt += 1 if grid[i][j + 1] == 0 else 0
+    else:
+        cnt += 1
     return cnt
 
 
