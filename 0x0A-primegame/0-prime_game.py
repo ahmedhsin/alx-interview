@@ -21,20 +21,13 @@ def SieveOfEratosthenes(n):
     return prime
 
 
-def getMaxMultiples(n, primes_number, exclude=[]):
+def getFsmallest(n, primes_number, exclude=[]):
     """get max multiples of n from prime numbers excluding exclude list"""
-    tmp_max = 0
-    number = 0
     for i in primes_number:
-        if exclude.count(i) > 0:
+        if exclude.count(i):
             continue
-        total = int(n / i)
-        for j in exclude:
-            total -= int(n / (i * j))
-        if total > tmp_max:
-            number = i
-            tmp_max = max(tmp_max, total)
-    return number
+        return i
+    return 0
 
 
 def play(players, n, primes_numbers, exclude=[]):
@@ -42,32 +35,13 @@ def play(players, n, primes_numbers, exclude=[]):
     turn = 0
     while True:
         if turn == 0:
-            x = getMaxMultiples(n, primes_numbers, exclude)
+            x = getFsmallest(n, primes_numbers, exclude)
             if (x == 0):
                 players[1] += 1
                 return
             exclude.append(x)
         else:
-            x = getMaxMultiples(n, primes_numbers, exclude)
-            if (x == 0):
-                players[0] += 1
-                return
-            exclude.append(x)
-        turn = 1 - turn
-
-
-def play(players, n, primes_numbers, exclude=[]):
-    """play the game and update the players score"""
-    turn = 0
-    while True:
-        if turn == 0:
-            x = getMaxMultiples(n, primes_numbers, exclude)
-            if (x == 0):
-                players[1] += 1
-                return
-            exclude.append(x)
-        else:
-            x = getMaxMultiples(n, primes_numbers, exclude)
+            x = getFsmallest(n, primes_numbers, exclude)
             if (x == 0):
                 players[0] += 1
                 return
