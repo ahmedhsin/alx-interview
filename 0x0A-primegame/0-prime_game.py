@@ -77,8 +77,8 @@ def play(players, n, primes_numbers, exclude=[]):
 
 def isWinner(x, nums):
     """find the winner of the game"""
-    # if (x <= 0 or nums == [] or x != len(nums)):
-    #     return None
+    if (x <= 0 or nums == [] or x != len(nums)):
+        return None
     players = [0, 0]
     maxNum = max(nums)
     primes = SieveOfEratosthenes(maxNum + 10)
