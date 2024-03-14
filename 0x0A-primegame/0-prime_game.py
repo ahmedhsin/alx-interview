@@ -37,32 +37,42 @@ def getMaxMultiples(n, primes_number, exclude=[]):
     return number
 
 
-# def play(players, n, primes_numbers, exclude=[]):
-#     """play the game and update the players score"""
-#     turn = 0
-#     while True:
-#         if turn == 0:
-#             x = getMaxMultiples(n, primes_numbers, exclude)
-#             if (x == 0):
-#                 players[1] += 1
-#                 return
-#             exclude.append(x)
-#         else:
-#             x = getMaxMultiples(n, primes_numbers, exclude)
-#             if (x == 0):
-#                 players[0] += 1
-#                 return
-#             exclude.append(x)
-#         turn = 1 - turn
+def play(players, n, primes_numbers, exclude=[]):
+    """play the game and update the players score"""
+    turn = 0
+    while True:
+        if turn == 0:
+            x = getMaxMultiples(n, primes_numbers, exclude)
+            if (x == 0):
+                players[1] += 1
+                return
+            exclude.append(x)
+        else:
+            x = getMaxMultiples(n, primes_numbers, exclude)
+            if (x == 0):
+                players[0] += 1
+                return
+            exclude.append(x)
+        turn = 1 - turn
 
 
 def play(players, n, primes_numbers, exclude=[]):
     """play the game and update the players score"""
-    s = sum(primes_numbers)
-    if (s % 2 == 0):
-        players[1] += 1
-    else:
-        players[0] += 1
+    turn = 0
+    while True:
+        if turn == 0:
+            x = getMaxMultiples(n, primes_numbers, exclude)
+            if (x == 0):
+                players[1] += 1
+                return
+            exclude.append(x)
+        else:
+            x = getMaxMultiples(n, primes_numbers, exclude)
+            if (x == 0):
+                players[0] += 1
+                return
+            exclude.append(x)
+        turn = 1 - turn
 
 
 def isWinner(x, nums):
@@ -71,11 +81,11 @@ def isWinner(x, nums):
         return None
     players = [0, 0]
     maxNum = max(nums)
-    primes = SieveOfEratosthenes(maxNum)
-    primes_numbers = [i for i in range(len(primes)) if primes[i]]
+    primes = SieveOfEratosthenes(maxNum + 10)
     for n in nums:
         exclude = []
-        play(players, n, primes_numbers, exclude)
+        primesNUmberTilln = [i for i in range(n + 1) if primes[i]]
+        play(players, n, primesNUmberTilln, exclude)
     if players[0] > players[1]:
         return "Maria"
     elif players[0] < players[1]:
