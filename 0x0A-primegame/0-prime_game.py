@@ -37,23 +37,32 @@ def getMaxMultiples(n, primes_number, exclude=[]):
     return number
 
 
+# def play(players, n, primes_numbers, exclude=[]):
+#     """play the game and update the players score"""
+#     turn = 0
+#     while True:
+#         if turn == 0:
+#             x = getMaxMultiples(n, primes_numbers, exclude)
+#             if (x == 0):
+#                 players[1] += 1
+#                 return
+#             exclude.append(x)
+#         else:
+#             x = getMaxMultiples(n, primes_numbers, exclude)
+#             if (x == 0):
+#                 players[0] += 1
+#                 return
+#             exclude.append(x)
+#         turn = 1 - turn
+
+
 def play(players, n, primes_numbers, exclude=[]):
     """play the game and update the players score"""
-    turn = 0
-    while True:
-        if turn == 0:
-            x = getMaxMultiples(n, primes_numbers, exclude)
-            if (x == 0):
-                players[1] += 1
-                return
-            exclude.append(x)
-        else:
-            x = getMaxMultiples(n, primes_numbers, exclude)
-            if (x == 0):
-                players[0] += 1
-                return
-            exclude.append(x)
-        turn = 1 - turn
+    s = sum(primes_numbers)
+    if (s % 2 == 0):
+        players[1] += 1
+    else:
+        players[0] += 1
 
 
 def isWinner(x, nums):
