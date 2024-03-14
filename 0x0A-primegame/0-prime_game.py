@@ -1,6 +1,8 @@
 #!/usr/bin/python3
+"""solution for prime game"""
 
 def SieveOfEratosthenes(n):
+    """seive of eratosthenes to find prime numbers till n"""
     prime = [True for i in range(n+1)]
     p = 2
     while (p * p <= n):
@@ -19,6 +21,7 @@ def SieveOfEratosthenes(n):
 
 
 def getMaxMultiples(n, primes_number, exclude=[]):
+    """get max multiples of n from prime numbers excluding exclude list"""
     tmp_max = 0
     number = 0
     for i in primes_number:
@@ -34,6 +37,7 @@ def getMaxMultiples(n, primes_number, exclude=[]):
 
 
 def play(players, n, primes_numbers, exclude=[]):
+    """play the game and update the players score"""
     turn = 0
     while True:
         if turn == 0:
@@ -52,6 +56,7 @@ def play(players, n, primes_numbers, exclude=[]):
 
 
 def isWinner(x, nums):
+    """find the winner of the game"""
     players = [0, 0]
     maxNum = max(nums)
     primes = SieveOfEratosthenes(maxNum)
