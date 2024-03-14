@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """solution for prime game"""
 
+
 def SieveOfEratosthenes(n):
     """seive of eratosthenes to find prime numbers till n"""
     prime = [True for i in range(n+1)]
@@ -57,6 +58,8 @@ def play(players, n, primes_numbers, exclude=[]):
 
 def isWinner(x, nums):
     """find the winner of the game"""
+    if (x <= 0 or nums == [] or x != len(nums)):
+        return None
     players = [0, 0]
     maxNum = max(nums)
     primes = SieveOfEratosthenes(maxNum)
